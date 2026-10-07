@@ -1,0 +1,130 @@
+To use git locally in PC
+do git config by going to git bash terminal in windows
+
+On github portal add step will be removed and we can directly commit.
+
+
+git config --global user.name "Syed"   -- typically the name of your git account or any name this will be set at global level
+git config --global user.email "your-email@example.com" -- typically the name of your github email account.
+git config --global credential.helper manager -- this is for caching or saving te credential
+
+this will be stored in cat /c/Users/<your-username>/.gitconfig
+
+From github web we can directly create a repo and create or commit file or folders or branch but if you want to work on 
+two ways. 
+1. create the repo maintain on git then cloning it and working with it in local with that repo
+2. create the repo or the foldername in you local PC then commit it locally there then push it to github main.
+
+1. Create a folder where you want to clone the repository the folder name is the repository
+go inside the folder and run
+
+-- git clone https:// paste the URL from the repo code in the github website
+
+all the files will be cloned in the local folder.
+
+because we did git clone a .git hidden folder will be created in the repo folder.
+
+-- run ls -a or powershell ls -Force
+
+then once the repository is cloned then check the status commands
+
+-- git status on freshly cloned command.
+
+it shows the file as untracked on the new file 
+and if on the same cloned file if you change anything then it shows modified status
+unmodified 
+or staged when we add the file but did not commit yet then.
+
+run command git add . this will make the status to staged and says changes ready to be committed.
+
+git commit -m "Added new txt file"    -- this will commit the changes in the local folder
+
+git push origin main   --- or you can write git push -u origin main  -- give it authorize for github for first time.
+
+once git push -u origin main then we can simply put git push so next time it will not ask full line origin main.
+
+2. Started point local folder to have git folder.
+
+First create the repo on git...
+create a folder similar to repo name on your local.
+the commands given to connect your local to git.
+get inside the local git folder as created.
+
+-- run git init command  -- this will create the .git folder in the local
+
+-- now add you project file in the folder.
+-- then same thing 
+-- run git status to see the untrack changes
+-- run git add . to add them to be committed as mentioned in 1.
+-- run git commit -m "Added new files"
+-- now we cant directly do a git push curreently we have commited the code to our local
+-- we need to add remote repo command to create a link to the repository in the git
+run command git remote add origin https://github.com/zaferzain53/LocalRepo.git
+-- then run command git remote -v to check the remote repository link. just to verify
+-- run the command to check which branch we are in
+-- git branch shows the current branches available look for the * one is the selected branch, it shows master initially
+-- run command git branch <branchname> to select this branch as current branch
+-- rename  branch command git branch -M main -- having current branch selected if run this command will rename it to main
+-- run command git push origin main --- it will be pushed to github.
+
+
+****** Branches ******
+
+-- run command git checkout branchname to navigate to that branch, check by running git branch that specific branch will be with *
+-- run command git checkout -b branchname -- create a new branch.
+-- run command git checkout -d branchname -- delete the branch
+once the branch command is for create a clone of main is created in local
+
+then same process create a file in feature1 branch
+
+check git status, git add ., git commit -m 'Add comment' then git push origin main
+
+git push origin main will be first time feature branch push to git repository.
+ 
+got the website it itself will show the conflicts in GitHub website.
+
+so basically if we did the local commit of the feature branch and then we did the git push origin feature1 command. 
+the changes will be pushed the feature branch1 but on GitHub website it will give us an option to compare and pull request 
+
+when we click it gitbub will show the create pull request option button.
+when we click it then it will pull the main branch and show if there are any conflicts, which can be reviewed
+if there are any conflicts exits, if there are then we will get the options to check and select based on what to keep
+
+and what not to keep.
+
+then if no conflicts then we can do merge pull requests then click on confirm merge, it will create a commit to merge the feature to main branch.
+
+
+Now we did pull and merge on the webste directly but the local repository is not update the latest changes on git.
+
+run the command in local git pull origin main, this will update the local repository into main.
+
+-- Next conflicts from the git command line we have already seen it how to do this from GitHub website
+
+-- goto feature1 add something on the same line as the main in the same file.
+-- do git add . then git commit -m 'comment' 
+-- check git branch you are in feature1.
+
+then run git diff main
+
+this shows the differences between main and feature1 for the same1 file.
+
+-- run the command git merge main... this will show you the conflicts on the file itself directly choose from vscode accept incoming, keepo current etc.
+
+-- then save the file and run git status
+
+then do git add . and git commit -m 'comment' then merge similarly both main and feature1 having both in sync.
+
+once this is done.
+
+
+Follow the process everytime of GitHub commit.
+so basically we can first create a feature branch local
+do changes there in feature branch local
+then we push the feature branch to GitHub
+from GitHub create a pull request and do the merge to main from there.
+then pull the main from the GitHub to local using git pull origin main command
+
+then do the merge to main branch in local.
+then do the push to git for both separately.
+ 	
