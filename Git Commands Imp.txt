@@ -125,6 +125,16 @@ then we push the feature branch to GitHub
 from GitHub create a pull request and do the merge to main from there.
 then pull the main from the GitHub to local using git pull origin main command
 
+
+To get git committed logs run command git log
+
+also git reset hash will allow you to go back to the old commit
+
+for removing the after commits 
+rung git reset --hard hash
+
+fork is for copying rough free repository to your repository
+
 then do the merge to main branch in local.
 then do the push to git for both separately.
  	
