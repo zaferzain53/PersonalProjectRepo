@@ -15,17 +15,6 @@ jobs:
         echo "USER set? ${{ secrets.SSH_USER != '' }}"
         echo "HOST set? ${{ secrets.SSH_HOST != '' }}"
         echo "WORK_DIR set? ${{ secrets.WORK_DIR != '' }}"
-    - name: install ssh keys
-      # check this thread to understand why its needed:
-      # https://stackoverflow.com/a/70447517
-      run: |
-        install -m 600 -D /dev/null ~/.ssh/id_rsa
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
-    - name: test ssh
-      run: |
-        ssh -v ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "hostname"
     - name: Pull latest code
       run: |
         cd "${{ secrets.WORK_DIR }}"
