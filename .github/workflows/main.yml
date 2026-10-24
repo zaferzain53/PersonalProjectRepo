@@ -26,15 +26,10 @@ jobs:
     - name: test ssh
       run: |
         ssh -v ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "hostname"
-    - name: connect and pull
+    - name: Pull latest code
       run: |
-        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
-        pwd &&
-        ls -la &&
-        cd ${{ secrets.WORK_DIR }} &&
-        git status &&
-        git checkout ${{ secrets.MAIN_BRANCH }} &&
-        git pull
-        "    
+        cd "${{ secrets.WORK_DIR }}"
+        git status
+        git pull 
     - name: cleanup
       run: rm -rf ~/.ssh
